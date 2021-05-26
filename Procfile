@@ -1,1 +1,1 @@
-web: gunicorn WeatherTelegramBot.wsgi --log-file -
+worker: python tgbot/management/commands/bot.py
