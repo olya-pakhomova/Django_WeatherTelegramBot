@@ -26,6 +26,7 @@ def geo(message):
     keyboard.add(button_geo)
     bot.send_message(message.chat.id, "Привет! Нажми на кнопку и передай мне свое местоположение",
                      reply_markup=keyboard)
+#
 
 
 @bot.message_handler(content_types=["location"])
