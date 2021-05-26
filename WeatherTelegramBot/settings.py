@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-chz1=-wfp=alv)1ukc9$kpr@07+$^j5vjy)m%i2d9^96q*c2+s
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['WeatherTelegramBot.herokuapp.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
