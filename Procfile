@@ -1,1 +1,1 @@
-worker: python tgbot\management\commands\bot.py
+worker: python bot.py
