@@ -1,1 +1,1 @@
-bot: python tgbot\management\commands\bot.py
+bot: python bot.py
