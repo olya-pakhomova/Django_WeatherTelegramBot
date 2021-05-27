@@ -1,1 +1,1 @@
-bot: python manage.py runserver
+bot: python manage.py migrate && python manage.py runserver
