@@ -9,13 +9,21 @@ bot_token = os.environ['BOT_TOKEN']
 bot = telebot.TeleBot(bot_token)
 
 
-@bot.message_handler(commands=["geo"])
+@bot.message_handler(commands=["start"])
 def geo(message):
     keyboard = types.ReplyKeyboardMarkup(row_width=1, resize_keyboard=True)
-    button_geo = types.KeyboardButton(text="Отправить местоположение", request_location=True)
+    button_geo = types.KeyboardButton(text="Отправить местоположение по геолокации", request_location=True)
     keyboard.add(button_geo)
-    bot.send_message(message.chat.id, "Привет! Нажми на кнопку и передай мне свое местоположение",
-                     reply_markup=keyboard)
+    bot.reply_to(message, "Привет! Я рассказываю о текущей погоде.\n"
+                          "Если хочешь узнать погоду в своём городе отправь мне свою геопозицию, "
+                          "либо напиши город вручную",
+                 reply_markup=keyboard)
+
+
+@bot.message_handler(content_types=["text"])
+def get_city(message):
+    geo_params = {'q': message.text}
+    get_weather(message, geo_params)
 
 
 @bot.message_handler(content_types=["location"])
@@ -53,6 +61,7 @@ def get_weather(message, params):
         bot.send_message(message.from_user.id, weather)
     except Exception as e:
         print("Exception (weather):", e)
+        bot.send_message(message.from_user.id, "Извините, такой город не найден. Попробуйте еще раз!")
         pass
 
 
