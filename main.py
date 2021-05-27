@@ -20,16 +20,16 @@ def geo(message):
 def location(message):
     if message.location:
         chat_id = message.chat.id
-        from tgbot.models import User
-        User.objects.update_or_create(
-            user_id=chat_id,
-            defaults={
-                'username': message.from_user.username,
-                'full_name': message.from_user.full_name,
-                'latitude': message.location.latitude,
-                'longitude': message.location.longitude
-            }
-        )
+        # from tgbot.models import User
+        # User.objects.update_or_create(
+        #     user_id=chat_id,
+        #     defaults={
+        #         'username': message.from_user.username,
+        #         'full_name': message.from_user.full_name,
+        #         'latitude': message.location.latitude,
+        #         'longitude': message.location.longitude
+        #     }
+        # )
         geo_params = {'lat': message.location.latitude, 'lon': message.location.longitude}
         get_weather(message, geo_params)
 
