@@ -63,5 +63,5 @@ def get_date():
     return now[0] + ' ' + month_list[int(now[1]) - 1] + ' ' + now[2] + ' года'
 
 
-if __name__ == '__weather_bot__':
+if __name__ == '__main__':
     bot.polling(none_stop=True)

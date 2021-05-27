@@ -1,1 +1,1 @@
-bot: python weather_bot.py
+bot: python main.py
