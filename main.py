@@ -1,10 +1,12 @@
+import os
+
 import telebot
 from telebot import types
 import requests
-from WeatherTelegramBot.settings import TOKEN
 from datetime import datetime
 
-bot = telebot.TeleBot(TOKEN)
+bot_token = os.environ['BOT_TOKEN']
+bot = telebot.TeleBot(bot_token)
 
 
 @bot.message_handler(commands=["geo"])
