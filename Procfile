@@ -1,1 +1,1 @@
-bot: python manage.py
+bot: python manage.py runserver
