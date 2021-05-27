@@ -1,7 +1,12 @@
+import os
+
 import telebot
 import requests
 from django.core.management.base import BaseCommand
 from telebot import types
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WeatherTelegramBot.settings')
+
 from WeatherTelegramBot.settings import TOKEN
 from datetime import datetime
 
@@ -26,6 +31,8 @@ def geo(message):
     keyboard.add(button_geo)
     bot.send_message(message.chat.id, "Привет! Нажми на кнопку и передай мне свое местоположение",
                      reply_markup=keyboard)
+
+
 #
 
 
@@ -34,14 +41,14 @@ def location(message):
     if message.location:
         chat_id = message.chat.id
         User.objects.update_or_create(
-                user_id=chat_id,
-                defaults={
-                    'username': message.from_user.username,
-                    'full_name': message.from_user.full_name,
-                    'latitude': message.location.latitude,
-                    'longitude': message.location.longitude
-                }
-            )
+            user_id=chat_id,
+            defaults={
+                'username': message.from_user.username,
+                'full_name': message.from_user.full_name,
+                'latitude': message.location.latitude,
+                'longitude': message.location.longitude
+            }
+        )
         geo_params = {'lat': message.location.latitude, 'lon': message.location.longitude}
         get_weather(message, geo_params)
 
@@ -71,5 +78,3 @@ def get_date():
                   'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
     now = datetime.now().strftime("%d.%m.%Y").split('.')
     return now[0] + ' ' + month_list[int(now[1]) - 1] + ' ' + now[2] + ' года'
-
-
