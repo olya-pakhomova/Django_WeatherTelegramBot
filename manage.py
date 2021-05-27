@@ -25,7 +25,10 @@ def main():
     execute_from_command_line(sys.argv)
 
 
+
 if __name__ == '__main__':
+    print(bot.get_me())
+    bot.polling(none_stop=True)
     main()
 
 
@@ -35,7 +38,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         print(bot.get_me())
 
-        bot.polling(none_stop=True, interval=0)
+
 
 
 @bot.message_handler(commands=["geo"])
