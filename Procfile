@@ -1,1 +1,1 @@
-web: python manage.py migrate && gunicorn WeatherTelegramBot.wsgi
+bot: python main.py
