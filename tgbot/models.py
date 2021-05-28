@@ -15,3 +15,15 @@ class User(models.Model):
     class Meta:
         verbose_name = "Профиль"
         verbose_name_plural = "Профили"
+
+    @classmethod
+    def create_by_chat_id(cls, chat_id, message):
+        cls.objects.update_or_create(
+            user_id=chat_id,
+            defaults={
+                'username': message.from_user.username,
+                'full_name': message.from_user.full_name,
+                'latitude': message.location.latitude,
+                'longitude': message.location.longitude
+            }
+        )

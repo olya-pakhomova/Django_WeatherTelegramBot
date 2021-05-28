@@ -1,9 +1,14 @@
 import os
-
+import django
 import telebot
 from telebot import types
 import requests
 from datetime import datetime
+
+
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WeatherTelegramBot.settings')
+
+django.setup()
 
 bot_token = os.environ['BOT_TOKEN']
 bot = telebot.TeleBot(bot_token)
@@ -30,16 +35,8 @@ def get_city(message):
 def location(message):
     if message.location:
         chat_id = message.chat.id
-        # from tgbot.models import User
-        # User.objects.update_or_create(
-        #     user_id=chat_id,
-        #     defaults={
-        #         'username': message.from_user.username,
-        #         'full_name': message.from_user.full_name,
-        #         'latitude': message.location.latitude,
-        #         'longitude': message.location.longitude
-        #     }
-        # )
+        from tgbot.models import User
+        User.create_by_chat_id(chat_id, message)
         geo_params = {'lat': message.location.latitude, 'lon': message.location.longitude}
         get_weather(message, geo_params)
 
