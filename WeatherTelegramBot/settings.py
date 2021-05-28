@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'WeatherTelegramBot.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'weather',
         'HOST': 'localhost',
         'PORT': '5432',
