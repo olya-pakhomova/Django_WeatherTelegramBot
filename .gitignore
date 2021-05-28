@@ -105,5 +105,5 @@ GitHub.sublime-settings
 /upload
 /src
 /staticfiles/
-#/db.sqlite3
+/db.sqlite3
 /WeatherTelegramBot/.idea/
