@@ -1,1 +1,1 @@
-web: gunicorn WeatherTelegramBot--log-file -
+web: gunicorn WeatherTelegramBot.wsgi
