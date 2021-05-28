@@ -2,14 +2,12 @@ import os
 import django
 import requests
 import telebot
-
 from telebot import types
 from datetime import datetime
 
 
-# os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WeatherTelegramBot.settings')
-#
-# django.setup()
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'WeatherTelegramBot.settings')
+django.setup()
 
 bot_token = os.environ['BOT_TOKEN']
 bot = telebot.TeleBot(bot_token)
@@ -72,6 +70,3 @@ def get_date():
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
-
-# bot: python main.py
-# clock: python bot.py
