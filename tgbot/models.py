@@ -27,3 +27,7 @@ class User(models.Model):
                 'longitude': message.location.longitude
             }
         )
+
+    @classmethod
+    def get_user(cls):
+        return cls.objects.all()
