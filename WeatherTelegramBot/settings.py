@@ -85,27 +85,27 @@ WSGI_APPLICATION = 'WeatherTelegramBot.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'weather',
-        'HOST': 'localhost',
-        'PORT': '5432',
-        'USER': 'admin',
-        'PASSWORD': '6HbX6YLCpT',
-    }
-}
-
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'dfkde9hare12k7',
-#         'HOST': 'ec2-54-216-185-51.eu-west-1.compute.amazonaws.com',
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'weather',
+#         'HOST': 'localhost',
 #         'PORT': '5432',
-#         'USER': 'hkqzqtbcnybdza',
-#         'PASSWORD': '370e1956131f9cfb569e635c5884f72d7fa73aee45104afb9bc4f9c712af4c7b',
+#         'USER': 'admin',
+#         'PASSWORD': '6HbX6YLCpT',
 #     }
 # }
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dfkde9hare12k7',
+        'HOST': 'ec2-54-216-185-51.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
+        'USER': 'hkqzqtbcnybdza',
+        'PASSWORD': '370e1956131f9cfb569e635c5884f72d7fa73aee45104afb9bc4f9c712af4c7b',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
