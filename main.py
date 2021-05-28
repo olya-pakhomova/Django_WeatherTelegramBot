@@ -29,7 +29,7 @@ def start(message):
 @bot.message_handler(content_types=["text"])
 def get_city(message):
     geo_params = {'q': message.text}
-    get_weather(message, geo_params)
+    get_weather(message.from_user.id, geo_params)
 
 
 @bot.message_handler(content_types=["location"])
