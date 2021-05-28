@@ -22,8 +22,8 @@ def get_every_day_weather():
         get_weather(user.user_id, geo_params)
 
 
-schedule.every(60).seconds.do(get_every_day_weather)
+schedule.every().day.at("08:00").do(get_every_day_weather)
 
 while True:
     schedule.run_pending()
-    time.sleep(1 * int(os.environ['HOURS']))
+    time.sleep(3600 * int(os.environ['HOURS']))
