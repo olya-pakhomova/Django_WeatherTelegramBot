@@ -1,2 +1,1 @@
-bot: python main.py
-clock: python bot.py
+web: gunicorn WeatherTelegramBot--log-file -
