@@ -22,7 +22,7 @@ def get_every_day_weather():
         get_weather(user.user_id, geo_params)
 
 
-schedule.every().day.at("08:00").do(get_every_day_weather)
+schedule.every(4).hour.do(get_every_day_weather)
 
 while True:
     schedule.run_pending()
