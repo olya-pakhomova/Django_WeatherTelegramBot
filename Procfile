@@ -1,3 +1,3 @@
 bot: python main.py
 clock: python bot.py
-worker: celery worker --tasks=tasks.py
+worker: python manage.py celery worker --beat
