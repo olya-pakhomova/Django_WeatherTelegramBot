@@ -39,7 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'tgbot'
+    'tgbot',
+    'tasks',
+    'django_celery_beat',
+    'django_celery_results'
 ]
 
 MIDDLEWARE = [
@@ -159,3 +162,18 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# REDIS_HOST = 'localhost'
+# REDIS_PORT = '6379'
+
+# Celery Configuration Options
+CELERY_TIMEZONE = "Europe/Moscow"
+CELERY_TASK_TRACK_STARTED = True
+CELERY_TASK_TIME_LIMIT = 30 * 60
+
+# CELERY SETTINGS
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'
+# CELERY_BACKEND = 'redis://localhost:6379/0'
+# CELERY_RESULT_BACKEND = 'django-db'
+CELERY_BROKER_URL = 'redis: // : pc29bf52c9c48380d44b0e34d927a765b513dea2555b8a9d032f8660fd4a41dba @ ec2-34-254-104-245.eu-west-1.compute.amazonaws.com : 32560'
+CELERY_RESULT_BACKEND = 'redis: // : pc29bf52c9c48380d44b0e34d927a765b513dea2555b8a9d032f8660fd4a41dba @ ec2-34-254-104-245.eu-west-1.compute.amazonaws.com : 32560'
