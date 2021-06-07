@@ -1,2 +1,2 @@
 web: gunicorn proj.wsgi
-worker: celery -A WeatherTelegramBot worker -l INFO --pool=solo
+celery: celery -A WeatherTelegramBot worker -l INFO --pool=solo
