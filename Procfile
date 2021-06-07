@@ -1,2 +1,2 @@
-web: gunicorn WeatherTelegramBot:app
-worker: celery worker -A celery.py -l INFO
+web: gunicorn WeatherTelegramBot:app--log-file -
+worker: celery -A WeatherTelegramBot:app worker -l info
