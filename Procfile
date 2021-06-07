@@ -1,3 +1,2 @@
-bot: python main.py
-clock: python bot.py
+web: gunicorn proj.wsgi
 worker: celery -A WeatherTelegramBot worker -l INFO --pool=solo
