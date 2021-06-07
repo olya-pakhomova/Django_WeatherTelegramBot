@@ -10,7 +10,7 @@ from django.http import HttpResponse
 from WeatherTelegramBot import celery_app
 
 
-@shared_task
+@celery_app.task()
 def create_new_object():
     from tgbot.models import User
     random_id = random.randint(1, 10000)
