@@ -74,27 +74,27 @@ WSGI_APPLICATION = 'WeatherTelegramBot.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'weather',
-#         'HOST': 'localhost',
-#         'PORT': '5432',
-#         'USER': 'admin',
-#         'PASSWORD': '6HbX6YLCpT',
-#     }
-# }
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dfkde9hare12k7',
-        'HOST': 'ec2-54-216-185-51.eu-west-1.compute.amazonaws.com',
+        'NAME': 'weather',
+        'HOST': 'localhost',
         'PORT': '5432',
-        'USER': 'hkqzqtbcnybdza',
-        'PASSWORD': '370e1956131f9cfb569e635c5884f72d7fa73aee45104afb9bc4f9c712af4c7b',
+        'USER': 'admin',
+        'PASSWORD': '6HbX6YLCpT',
     }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'dfkde9hare12k7',
+#         'HOST': 'ec2-54-216-185-51.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432',
+#         'USER': 'hkqzqtbcnybdza',
+#         'PASSWORD': '370e1956131f9cfb569e635c5884f72d7fa73aee45104afb9bc4f9c712af4c7b',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -152,15 +152,23 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REDIS_HOST = 'localhost'
 REDIS_PORT = '6379'
 
-# Celery Configuration Options
-CELERY_TIMEZONE = "Europe/Moscow"
-CELERY_TASK_TRACK_STARTED = True
-CELERY_TASK_TIME_LIMIT = 30 * 60
 
 # CELERY SETTINGS
 # CELERY_BROKER_URL = 'redis://redis:6379/0'
 # CELERY_BACKEND = 'redis://redis:6379/0'
-#
-CELERY_BROKER_URL = os.environ['REDIS_URL'],
-CELERY_BACKEND = os.environ['REDIS_URL']
-CELERY_RESULT_BACKEND = 'django-db'
+# #
+# CELERY_BROKER_URL = os.environ['REDIS_URL'],
+# CELERY_BACKEND = os.environ['REDIS_URL']
+# CELERY_RESULT_BACKEND = 'django-db'
+
+CELERY_BROKER_URL = os.environ['REDIS_URL']
+BROKER_POOL_LIMIT = 1
+BROKER_CONNECTION_TIMEOUT = 10
+CELERY_CONCURRENCY = 4
+CELERY_RESULT_BACKEND = os.environ['REDIS_URL']
+
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_TIMEZONE = "Europe/Moscow"
+CELERY_ENABLE_UTC = True
