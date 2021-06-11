@@ -1,3 +1,3 @@
 web :  gunicorn WeatherTelegramBot.wsgi --log-file - 
-worker :  python manage.py celery worker --loglevel = info 
+worker :  celery -A WeatherTelegramBot:celery_app worker -l info
 beat :  python manage.py celery beat --loglevel = info
