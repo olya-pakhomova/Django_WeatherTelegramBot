@@ -132,7 +132,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'weather-telegaram-bot/staticfiles')
 
 # Extra places for collectstatic to find static files.
 STATICFILES_DIRS = (
