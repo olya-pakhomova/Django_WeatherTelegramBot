@@ -29,8 +29,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'tgbot',
     'tasks',
-    'django_celery_beat',
-    'django_celery_results'
+    # 'django_celery_beat',
+    # 'django_celery_results'
 ]
 
 MIDDLEWARE = [
