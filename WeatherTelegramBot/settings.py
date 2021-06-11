@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import dj_database_url
+
 # import environ
 #
 #
@@ -63,7 +64,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'WeatherTelegramBot.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -114,7 +114,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
@@ -127,7 +126,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
@@ -152,23 +150,38 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 REDIS_HOST = 'localhost'
 REDIS_PORT = '6379'
 
-
 # CELERY SETTINGS
 # CELERY_BROKER_URL = 'redis://redis:6379/0'
 # CELERY_BACKEND = 'redis://redis:6379/0'
 # #
 # CELERY_BROKER_URL = os.environ['REDIS_URL'],
 # CELERY_BACKEND = os.environ['REDIS_URL']
-# CELERY_RESULT_BACKEND = 'django-db'
+CELERY_RESULT_BACKEND = 'django-db'
 
-CELERY_BROKER_URL = os.environ['REDIS_URL']
-BROKER_POOL_LIMIT = 1
+# CELERY_BROKER_URL = os.environ['REDIS_URL']
+# BROKER_POOL_LIMIT = 1
 BROKER_CONNECTION_TIMEOUT = 10
 CELERY_CONCURRENCY = 4
-CELERY_RESULT_BACKEND = os.environ['REDIS_URL']
+# CELERY_RESULT_BACKEND = os.environ['REDIS_URL']
 
-CELERY_TASK_SERIALIZER = 'json'
+# CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
-CELERY_ACCEPT_CONTENT = ['json']
+# CELERY_ACCEPT_CONTENT = ['json']
 CELERY_TIMEZONE = "Europe/Moscow"
 CELERY_ENABLE_UTC = True
+
+BROKER_URL = os.environ.get("REDIS_URL")
+BROKER_POOL_LIMIT = 1
+BROKER_CONNECTION_MAX_RETRIES = None
+
+CELERY_TASK_SERIALIZER = "json"
+CELERY_ACCEPT_CONTENT = ["json", "msgpack"]
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+
+# если BROKER_URL  ==  "django: //" :
+#     INSTALLED_APPS + =  ( "kombu.transport.django" , )
+
+# BROKER_TRANSPORT_OPTIONS  =  {
+#     "max_connections" : 2,
+#  }
+# BROKER_POOL_LIMIT  = Нет

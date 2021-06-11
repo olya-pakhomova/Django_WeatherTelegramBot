@@ -1,2 +1,3 @@
-bot: python main.py
-clock: python bot.py
+web :  gunicorn WeatherTelegramBot.wsgi --log-file - 
+worker :  python manage.py celery worker --loglevel = info 
+beat :  python manage.py celery beat --loglevel = info
