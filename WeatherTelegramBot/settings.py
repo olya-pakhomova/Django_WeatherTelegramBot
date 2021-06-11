@@ -152,7 +152,7 @@ REDIS_HOST = 'localhost'
 REDIS_PORT = '6379'
 
 # CELERY SETTINGS
-# CELERY_BROKER_URL = 'redis://redis:6379/0'
+CELERY_BROKER_URL = 'redis://redis:6379/0'
 # CELERY_BACKEND = 'redis://redis:6379/0'
 # #
 # CELERY_BROKER_URL = os.environ['REDIS_URL'],
@@ -171,13 +171,13 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = "Europe/Moscow"
 CELERY_ENABLE_UTC = True
 
-BROKER_URL = os.environ.get("REDIS_URL")
+# BROKER_URL = os.environ.get("REDIS_URL")
 BROKER_POOL_LIMIT = 1
 BROKER_CONNECTION_MAX_RETRIES = None
 
 CELERY_TASK_SERIALIZER = "json"
 CELERY_ACCEPT_CONTENT = ["json", "msgpack"]
-CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+# CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 
 # если BROKER_URL  ==  "django: //" :
 #     INSTALLED_APPS + =  ( "kombu.transport.django" , )
